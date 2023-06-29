@@ -32,7 +32,7 @@ app.use(express.static(`${__dirname}/public`));
 
 app.get("/", (request, response) => {
   fs.readFile("index.html", "utf-8", (error, data) => {
-    connection.query(`select * from list`, (error, results, fields) => {
+    connection.query(`select * from list order by id desc`, (error, results, fields) => {
       if (error) throw error;
 
       response.send(
